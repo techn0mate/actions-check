@@ -1,0 +1,19 @@
+name: Pull Request Notification
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Show custom message and GIF
+        run: |
+          echo "Hello, PR maker! We have received your pull request."
+          echo "Here's a GIF to show our appreciation:"
+          curl https://media.giphy.com/media/1QffP8E6nk4gKYZO5S/giphy.gif | base64 --decode > gif.gif
+          git add gif.gif
+          git commit -m "Add GIF to PR notification message"
+          git push origin HEAD:$GITHUB_REF
