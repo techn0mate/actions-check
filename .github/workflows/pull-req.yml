@@ -12,8 +12,5 @@ jobs:
       - name: Show custom message and GIF
         run: |
           echo "Hello, PR maker! We have received your pull request."
-          echo "Here's a GIF to show our appreciation:"
-          curl https://static.wixstatic.com/media/960a98_038f538b574542439920cddba7c448da~mv2.gif | base64 --decode > gif.gif
-          git add gif.gif
           git commit -m "Add GIF to PR notification message"
           git push origin HEAD:$GITHUB_REF
